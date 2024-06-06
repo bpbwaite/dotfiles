@@ -1,0 +1,88 @@
+@import 'frappe.css';
+
+* {
+	font-size: 16px;
+	font-family: MonaspiceKr Nerd Font Propo;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+window#waybar {
+	background: @base;
+	color: @text; 
+}
+
+tooltip {
+  background: @base;
+  border: 1px solid @overlay2;
+}
+tooltip label {
+  color: @text;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: @crust;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: @base;
+	background: @crust;
+}
+
+#clock {
+  background: @base;
+}
+
+#workspaces,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray {
+	background: @crust;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #fdf6e3;
+}
+#workspaces button.focused {
+	color: #268bd2;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #1a1a1a;
+	border: #1a1a1a;
+	padding: 0 3px;
+}
+
+#pulseaudio {
+	color: @blue;
+}
+
+#memory {
+	color: @teal;
+}
+#cpu {
+	color: @pink;
+}
+#battery {
+	color: @green;
+}
+#disk {
+	color: @yellow;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk {
+	padding: 2px 10px 0px;
+}
