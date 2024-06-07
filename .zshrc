@@ -16,13 +16,13 @@ alias ..='cd ..'
 
 alias shark='cd ~/shork && ./shork.sh'
 alias :q='cowsay dumbass'
-
+alias pulldots='cd ~/.dotfiles && git pull && stow ./ '
+alias pushdots='cd ~/.dotfiles && git commit -a -m "automated commit"'
 plugins=(git zsh-autosuggestions sudo)
 
 eval "$(oh-my-posh init zsh --config ~/.themes/catppuccin.omp.json)"
 
-
+eval $(thefuck --alias)
 # MUST BE LAST
 eval "$(zoxide init zsh)"
 
-eval $(thefuck --alias)
