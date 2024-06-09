@@ -53,7 +53,7 @@
 
 * {
   font-family: 'MonaspiceKr Nerd Font Mono', monospace;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* Window */
@@ -61,9 +61,9 @@ window {
   margin: 0px;
   padding: 10px;
   border: 0.16em solid @crust;
-  border-radius: 0.1em;
+  border-radius: 8px;
   background-color: @base;
-  animation: slideIn 0.1s ease-in-out both;
+  /*animation: slideIn 0.1s ease-in-out both; */
 }
 
 /* Slide In */
@@ -83,7 +83,7 @@ window {
   padding: 10px;
   border: none;
   background-color: @base;
-  animation: fadeIn 0.5s ease-in-out both;
+  animation: fadeIn 0.1s ease-in-out both;
 }
 
 /* Fade In */
@@ -118,10 +118,10 @@ window {
   margin: 5px 20px;
   padding: 10px;
   border: none;
-  border-radius: 0.1em;
+  border-radius: 8px;
   color: @text;
   background-color: @base;
-  animation: fadeIn 0.5s ease-in-out both;
+  animation: fadeIn 0.1s ease-in-out both;
 }
 
 #input image {
@@ -138,7 +138,7 @@ window {
   margin: 5px;
   border: none;
   color: @text;
-  animation: fadeIn 0.5s ease-in-out both;
+  animation: fadeIn 0.1s ease-in-out both;
 }
 
 #entry {
