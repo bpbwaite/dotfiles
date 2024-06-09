@@ -14,7 +14,7 @@ alias pls='sudo'
 alias mkdir='mkdir -pv'
 alias ..='cd ..'
 
-alias shark='cd ~/shork && ./shork.sh'
+alias shork='cd ~/shork && ~/shork/shork.sh'
 alias :q='cowsay dumbass'
 alias pulldots='cd ~/.dotfiles && git pull && stow ./ '
 alias pushdots='cd ~/.dotfiles && git commit -a -m "automated commit" && git push'
