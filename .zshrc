@@ -16,8 +16,10 @@ alias ..='cd ..'
 
 alias shork='cd ~/shork && ~/shork/shork.sh'
 alias :q='cowsay dumbass'
+
 alias pulldots='cd ~/.dotfiles && git pull && stow ./ '
 alias pushdots='cd ~/.dotfiles && git commit -a -m "automated commit" && git push'
+#alias hype='cd ~/.dotfiles && nvim'
 
 plugins=(git zsh-autosuggestions sudo)
 
@@ -25,4 +27,5 @@ eval "$(oh-my-posh init zsh --config ~/.themes/catppuccin.omp.json)"
 
 eval $(thefuck --alias)
 # MUST BE LAST
+alias cd='z'
 eval "$(zoxide init zsh)"
