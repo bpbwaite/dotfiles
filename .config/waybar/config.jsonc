@@ -1,61 +1,84 @@
 // -*- mode: json -*-
-
 {
 	"layer": "bottom",
 	"position": "bottom",
-  "reload_style_on_change" : true,
+	"reload_style_on_change": true,
+	"spacing": 8,
+	"margin-top": 0,
+	"margin-bottom": 4,
+	"margin-left": 4,
+	"margin-right": 4,
 	"modules-left": [
-		"custom/right-arrow-dark"
+		"custom/icon",
+		"hyprland/workspaces",
+		"hyprland/window"
 	],
 	"modules-center": [
-    "custom/left-arrow-dark",
-		"custom/left-arrow-light",
-
-		"clock",
-
-    "custom/right-arrow-light",
-    "custom/right-arrow-dark"
+		"clock"
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
+		"backlight",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"battery",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
+		"tray",
+		"custom/updates",
+		"custom/notification",
+		"custom/power"
 	],
-
-	"custom/left-arrow-dark": {
-		"format": "",
+	"custom/icon": {
+		"format": "󰣇",
+		//"on-click": "~/.config/rofi/bin/launcher",
 		"tooltip": false
 	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"active-only": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"*": 4
+		}
 	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
+	"hyprland/window": {
+		"format": "  {}",
+		"rewrite": {
+			"(.*) - NVIM": "  NeoVim",
+			"(.*) — Mozilla Firefox": "󰈹  Firefox",
+			"  ": "󰇄  Desktop",
+			"(.*) Spotify Free": "󰓇  Spotify",
+			"(.*) Spotify": "󰓇  Spotify",
+			"  ~": "  bri@porchtop",
+			"(.*) - Obsidian(.*)": "󱓧  Obsidian"
+		}
 	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"format": "{name}"
-	},
-
 	"clock": {
 		"format": "{:%e %B %Y ~ %I:%M %p }",
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"mode": "month",
+			"format": {
+				"months": "<span color='#cdd6f4'><b>{}</b></span>",
+				"days": "<span color='#cdd6f4'><b>{}</b></span>",
+				"weeks": "<span color='#cdd6f4'><b>W{}</b></span>",
+				"weekdays": "<span color='#cdd6f4'><b>{}</b></span>",
+				"today": "<span color='#f38ba8'><b>{}</b></span>"
+			}
+		}
+	},
+	"backlight": {
+		"format": "{icon} <b>{percent}%</b>",
+		"format-icons": [
+			"󰃞",
+			"󰃟",
+			"󰃠"
+		],
 		"tooltip": false
 	},
 	"pulseaudio": {
@@ -70,18 +93,32 @@
 			]
 		},
 		"scroll-step": 1,
-    "reverse-scrolling": true,
+		"reverse-scrolling": true,
 		"on-click": "pamixer --set-volume 0",
 		"on-click-right": "pavucontrol",
-    "on-click-middle": "pamixer -t"
+		"on-click-middle": "pamixer -t"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "{usage:2}%"
 	},
 	"memory": {
 		"interval": 5,
 		"format": "{}%"
 	},
-	"cpu": {
+	"disk": {
 		"interval": 5,
-		"format": "{usage:2}%"
+		"format": "Disk {percentage_used:2}%",
+		"path": "/"
+	},
+	"network": {
+		"interval": 30,
+		"format-wifi": "󰤨   {essid}",
+		"format-ethernet": "󰈀 Wired",
+		"fomat-disconnected": "󱚵 Disconnected",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected"
 	},
 	"battery": {
 		"states": {
@@ -98,12 +135,50 @@
 			""
 		]
 	},
-	"disk": {
-		"interval": 5,
-		"format": "Disk {percentage_used:2}%",
-		"path": "/"
-	},
 	"tray": {
-		"icon-size": 24
+		"icon-size": 24,
+		"spacing": 8
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󰈈 ",
+			"deactivated": "󰈉 "
+		}
+	},
+	"custom/updates": {
+		"format": "  {}",
+		"tooltip-format": "{}",
+		"escape": true,
+		"return-type": "json",
+		"exec": "~/.config/waybar/custom-scripts/updates",
+		"restart-interval": 60,
+		"on-click": "kitty -e ~/.config/waybar/custom-scripts/update",
+		"tooltip": false
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "󱅫 ",
+			"none": "󰂚 ",
+			"dnd-notification": "󰵙 ",
+			"dnd-none": "󰂛 ",
+			"inhibited-notification": "󱅫 ",
+			"inhibited-none": "󰂚 ",
+			"dnd-inhibited-notification": "󰵙 ",
+			"dnd-inhibited-none": "󰂛​ "
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+	"custom/power": {
+		"format": "󰐥",
+		"on-click": "~/.config/rofi/bin/power.sh",
+		"tooltip": false
 	}
 }

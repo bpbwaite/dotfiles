@@ -1,37 +1,94 @@
 @import 'frappe.css';
 
 * {
+	padding: 0;
+	margin: 0;
+	font-family: "MonaspiceKr Nerd Font Propo", "JetBrains Mono Nerd Font";
 	font-size: 16px;
-	font-family: MonaspiceKr Nerd Font Propo;
-  font-weight: bold;
-  min-height: 24px;
+	font-weight: bold;
+	min-height: 24px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#backlight,
+#custom-spotify,
+#custom-icon,
+#custom-updates,
+#network,
+#battery,
+#tray,
+#idle_inhibitor,
+#custom-power,
+#custom-notification {
+	border-radius: 18px;
+}
+
+/* ------ Modules Left ------ */
+.modules-left {
+	background-color: @base;
+	padding-right: 5px;
+	padding-left: 13px;
+}
+
+/* ------ Modules Center ------ */
+.modules-center {
+	background-color: @base;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+/* ------ Modules Right ------ */
+.modules-right {
+	background-color: @base;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+/* ------ Cpu Usage, Temperature, and Memory ------ */
+#cpu,
+#temperature,
+#memory {
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
+}
+
+#cpu {
+	color: @peach;
+}
+
+#memory {
+	color: @mauve;
+}
+
+#temperature {
+	color: @maroon;
+}
+
+
+#window {
+	background: @base;
+	color: @text;
+	padding-right: 4px;
 }
 
 window#waybar {
-	background: @base;
-	color: @text; 
-}
-
-tooltip {
-  background: @base;
-  border: 1px solid @overlay2;
-}
-tooltip label {
-  color: @text;
-}
-
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-	color: @crust;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-	color: @base;
-	background: @crust;
+	background-color: rgba(0, 0, 0, 0);
+	background: transparent;
+	border-bottom: 0px solid #ffffff;
+	border-top: 0px solid #ffffff;
+	transition-property: background-color;
+	transition-duration: .5s;
 }
 
 #clock {
-  background: @base;
+	background: @base;
 }
 
 #workspaces,
@@ -44,45 +101,137 @@ tooltip label {
 	background: @crust;
 }
 
-#workspaces button {
-	padding: 0 2px;
-	color: #fdf6e3;
+#workspaces button.empty {
+	color: @surface2;
+	font-family: JetBrainsMono Nerd Font;
 }
+
+#workspaces {
+	margin: 0px 1px 0px 1px;
+	padding: 0px 1px;
+	font-family: JetBrainsMono Nerd Font;
+}
+
+#workspaces button {
+	margin: 4px 2px;
+	padding: 0px 2px;
+	color: @yellow;
+	font-family: JetBrainsMono Nerd Font;
+}
+
 #workspaces button.focused {
 	color: #268bd2;
 }
+
 #workspaces button:hover {
+	opacity: 0.5;
+	padding: 0 3px;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
-#workspaces button:hover {
-	background: #1a1a1a;
-	border: #1a1a1a;
-	padding: 0 3px;
-}
 
+/* ------ Pulseaudio ------ */
 #pulseaudio {
-	color: @blue;
+	color: @peach;
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
 }
 
-#memory {
-	color: @teal;
+/* ------ Backlight ------ */
+#backlight {
+	color: @sky;
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
 }
-#cpu {
-	color: @pink;
+
+/* ------ Network ------ */
+#network {
+	color: @mauve;
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
 }
+
+/* ------ Battery ------ */
 #battery {
-	color: @green;
-}
-#disk {
-	color: @yellow;
+	color: @maroon;
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
 }
 
-#clock,
-#pulseaudio,
-#memory,
-#cpu,
-#battery,
-#disk {
-	padding: 2px 10px 0px;
+/* ------ Clock ------ */
+#clock {
+	padding-left: 10px;
+	color: @text;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+/* ------ System Tray ------ */
+#tray {
+	background-color: @surface1;
+	padding: 2px 5px;
+	margin: 4px 2px;
+}
+
+/* ------ Custom Modules ------ */
+#custom-icon {
+	font-size: 18px;
+	color: @blue;
+	padding-right: 5px;
+}
+
+#custom-power {
+	color: @red;
+	background-color: @surface1;
+	padding: 2px 9px;
+	margin: 4px 2px;
+	font-size: 15px;
+}
+
+#idle_inhibitor {
+	color: @green;
+	background-color: @surface1;
+	padding: 2px 9px;
+	margin: 4px 2px;
+	font-size: 15px;
+}
+
+#custom-updates {
+	padding: 2px 7px;
+	margin: 4px 2px;
+	background-color: @surface1;
+}
+
+#custom-updates.green {
+	color: @text;
+}
+
+#custom-updates.yellow {
+	color: @peach;
+}
+
+#custom-updates.red {
+	color: @red;
+}
+
+#custom-notification {
+	color: @teal;
+	background-color: @surface1;
+	padding: 2px 9px;
+	margin: 4px 2px;
+	font-size: 15px;
+}
+
+
+tooltip {
+	background: @base;
+	border: 1px solid @overlay2;
+}
+
+tooltip label {
+	color: @text;
 }
