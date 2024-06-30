@@ -10,17 +10,18 @@
 	"margin-right": 4,
 	"modules-left": [
 		"custom/icon",
-		"hyprland/workspaces",
-		"hyprland/window"
+		"hyprland/workspaces"
+		//"hyprland/window"
 	],
 	"modules-center": [
 		"clock"
 	],
 	"modules-right": [
-		"backlight",
 		"pulseaudio",
-		"cpu",
-		"memory",
+		"backlight",
+		//"cpu",
+		//"memory",
+		"network",
 		"battery",
 		"tray",
 		"custom/updates",
@@ -43,7 +44,7 @@
 			"default": ""
 		},
 		"persistent-workspaces": {
-			"*": 4
+			"*": 2
 		}
 	},
 	"hyprland/window": {
@@ -113,9 +114,10 @@
 	},
 	"network": {
 		"interval": 30,
-		"format-wifi": "󰤨   {essid}",
-		"format-ethernet": "󰈀 Wired",
-		"fomat-disconnected": "󱚵 Disconnected",
+		//"format-wifi": "󰤨   {essid}",
+		"format-wifi": "󰤨 ",
+		"format-ethernet": "󰈀",
+		"fomat-disconnected": "󱚵",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
 		"tooltip-format-ethernet": "{ifname} ",
 		"tooltip-format-disconnected": "Disconnected"
@@ -178,7 +180,7 @@
 	},
 	"custom/power": {
 		"format": "󰐥",
-		"on-click": "~/.config/rofi/bin/power.sh",
+		"on-click": "~/.local/bin/power",
 		"tooltip": false
 	}
 }
