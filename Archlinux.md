@@ -47,7 +47,7 @@ Note: $* or #* or just *** implies command may need to be modified
     # export MYHOSTNAME=BDesktop
     # export TIMEZONEPATH=US/Pacific
     # export MICROCODE=intel-ucode
-    # export DISKUUID=
+    # export DISKUUID=*
     // can get disk UUID after disk encryption using
     # ls -lh /dev/mapper
     ```
@@ -68,7 +68,7 @@ Note: $* or #* or just *** implies command may need to be modified
         ```
         # fdisk -x /dev/$MAINDISK
         # fdisk /dev/$MAINDISK
-        // CREATE GPT!!!!!!!! by pressing g
+        // CREATE GUID PT!!!!!!!! by pressing g
         // 600M partition is 1230848
         // press enter wherever there is a period:
         // (LINUX required for LUKS)
@@ -98,8 +98,8 @@ Note: $* or #* or just *** implies command may need to be modified
         ```
         # pacstrap -K /mnt base base-devel linux linux-firmware $MICROCODE nano man-db man-pages texinfo  wget git tar curl vi vim tmux zsh ufw
         ```
-    // fsck: why not worK?
     // do not add sbctl yet
+    // fsck: why not worK?
 
 + Chroot into the new system
     ```
@@ -125,9 +125,10 @@ Note: $* or #* or just *** implies command may need to be modified
 // back to encryption shit:
 + Modify /etc/mkinitcpio.conf:
 
-    >>use this> HOOKS=(base systemd autodetect microcode modconf kms keyboard keymap consolefont sd-vconsole block sd-encrypt filesystems fsck)
+    > HOOKS=(base systemd autodetect microcode modconf kms keyboard keymap consolefont sd-vconsole block sd-encrypt filesystems fsck)
 
     > MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+
 + Modify /etc/mkinitcpio.d/linux.preset:
 
     // !! replace esp with $EFISP (probably nvme0n1p1)
@@ -198,7 +199,6 @@ Note: $* or #* or just *** implies command may need to be modified
 
 + Set enable networking and NTP
     ```
-    
     # systemctl enable --now systemd-networkd.service
     # systemctl enable --now systemd-resolved.service
     # systemctl enable --now ufw.service
@@ -304,16 +304,17 @@ Note: $* or #* or just *** implies command may need to be modified
 
 
 
-+ OpenRGB, piper, htop/btop, ffmpeg
++ OpenRGB, piper, htop, btop, ffmpeg
 
 + No mouse acceleration
 + Environment variables/PATH?
 
 + look into CTT recs:
     + ffmpeg wl-clipboard wf-recorder ffmpegthumbnailer tumbler playerctl waybar-hyprland wlogout swaylock? pamixerORpamixerORamixer nwg-look ttf-nerd-fonts-symbols-common noto-fonts/noto-fonts-emoji ttf-jetbrains-mono-nerd adobe-source-code-pro-fonts
-    + brightnessctl hyprpicker noise-suppression-for-voice grimblast autojump? github-desktop mangohud nerd-fronts-fira-code plymouth?
-    + mesa? base-devel linux-headers usbutils autoconf automake cmatrix code efibootmgr gamemode gcc jdk-openjdk make fastfetch openssh os-prober pulseaudio-alsa pulseaudio-bluetooth terminus-font ufw? wine-mono wine-gecko zsh-syntax-highlighting zsh-autosuggestions
+    + brightnessctl noise-suppression-for-voice grimblast autojump? github-desktop mangohud plymouth?
+    + mesa? base-devel linux-headers usbutils autoconf automake cmatrix code efibootmgr gamemode gcc jdk-openjdk make fastfetch openssh os-prober pulseaudio-alsa pulseaudio-bluetooth terminus-font wine-mono wine-gecko zsh-syntax-highlighting zsh-autosuggestions
 
+    hyprpicker, github desktop, nerd-fonts-fira-code could not be found! maybe in AUR
 
 notification daemon, fontconfig, mako? xdg-user-dirs win11-icon-theme mdcat
 
