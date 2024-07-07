@@ -284,7 +284,7 @@ Note: $* or #* or just *** implies command may need to be modified
     + hyprland dunst cronie?thunar/dolphin/nnn/ranger wofi xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-kde-agent grim slurp
     + hyprpaper waybar brightnessctl pavucontrol xorg-xwayland
     + gnu-free-fronts ttf-liberation
-    + feh or weh? xev or wev? catimg
+    + feh or weh? xev or wev? catimg eza
     + some kind of dock
     + Terminal:
         + kitty Alacritty Hyper BlackBox WezTerm tmux
@@ -310,7 +310,7 @@ Note: $* or #* or just *** implies command may need to be modified
 + Environment variables/PATH?
 
 + look into CTT recs:
-    + ffmpeg wl-clipboard wf-recorder ffmpegthumbnailer tumbler playerctl waybar-hyprland wlogout swaylock? pamixerORpamixerORamixer nwg-look ttf-nerd-fonts-symbols-common noto-fonts/noto-fonts-emoji ttf-jetbrains-mono-nerd adobe-source-code-pro-fonts
+    + ffmpeg wl-clipboard wf-recorder ffmpegthumbnailer tumbler xarchiver playerctl waybar-hyprland wlogout swaylock? pamixerORpamixerORamixer nwg-look ttf-nerd-fonts-symbols-common noto-fonts/noto-fonts-emoji ttf-jetbrains-mono-nerd adobe-source-code-pro-fonts
     + brightnessctl noise-suppression-for-voice grimblast autojump? github-desktop mangohud plymouth?
     + mesa? base-devel linux-headers usbutils autoconf automake cmatrix code efibootmgr gamemode gcc jdk-openjdk make fastfetch openssh os-prober pulseaudio-alsa pulseaudio-bluetooth terminus-font wine-mono wine-gecko zsh-syntax-highlighting zsh-autosuggestions
 
