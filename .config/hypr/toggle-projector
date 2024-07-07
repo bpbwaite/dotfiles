@@ -1,10 +1,12 @@
 #!/bin/sh
 
-TOGGLE=$HOME/.projector-mode
+TOGGLE=/tmp/.projector-mode
 
 if [ ! -e $TOGGLE ]; then
     touch $TOGGLE
-    hyprctl keyword monitor "DP-3,preferred,auto-up,1" 
+    hyprctl keyword monitor "DP-3,preferred,auto-up,1"
+    # safe areas:
+    hyprctl keyword monitor "DP-3,addreserved,0,750,0,0"
 else
     rm $TOGGLE
     hyprctl keyword monitor "DP-3,preferred,auto,1,mirror,eDP-1" 
