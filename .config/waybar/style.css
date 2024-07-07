@@ -1,6 +1,8 @@
 @import 'frappe.css';
 
 * {
+	border: none;
+	border-radius: 0px;
 	padding: 0;
 	margin: 0;
 	font-family: "JetBrains Mono Nerd Font", "MonaspiceKr Nerd Font Propo";
@@ -27,6 +29,9 @@
 #custom-power,
 #custom-notification {
 	border-radius: 3px;
+	margin: 2px 0px 2px 0px;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 
 /* ------ Modules Left ------ */
@@ -94,6 +99,7 @@ window#waybar {
 #workspaces {
 	background: @base;
 }
+
 #pulseaudio,
 #memory,
 #cpu,
@@ -181,7 +187,7 @@ window#waybar {
 /* ------ Custom Modules ------ */
 #custom-icon {
 	font-size: 18px;
-	color: @blue;
+	color: @sapphire;
 	padding-right: 5px;
 }
 

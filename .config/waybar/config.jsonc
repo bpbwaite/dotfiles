@@ -2,30 +2,38 @@
 {
 	"layer": "bottom",
 	"position": "bottom",
-	"reload_style_on_change": true,
+	"mod": "dock",
+	"height":32,
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell":true,
 	"spacing": 8,
 	"margin-top": 0,
-	"margin-bottom": 4,
+	"margin-bottom": 0,
 	"margin-left": 4,
 	"margin-right": 4,
+	"reload_style_on_change": true,
+	
 	"modules-left": [
 		"custom/icon",
 		"hyprland/workspaces"
 		//"hyprland/window"
+		//"wlr/taskbar"
 	],
 	"modules-center": [
 		"clock"
 	],
 	"modules-right": [
 		"pulseaudio",
+		"pulseaudio#microphone",
 		"backlight",
 		//"cpu",
 		//"memory",
-		"network",
+		//"network", // uncomment for iwd, otherwise use nm-applet
 		"battery",
 		"tray",
 		"custom/updates",
-		"custom/notification",
+		//"custom/notification",
 		"custom/power"
 	],
 	"custom/icon": {
@@ -47,6 +55,24 @@
 			"*": 2
 		}
 	},
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"rotate": 0,
+		"icon-size": 24,
+		"icon-theme": "${i_theme}",
+		"spacing": 0,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty",
+			"kitty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+
 	"hyprland/window": {
 		"format": "  {}",
 		"rewrite": {
@@ -69,7 +95,7 @@
 				"days": "<span color='#cdd6f4'><b>{}</b></span>",
 				"weeks": "<span color='#cdd6f4'><b>W{}</b></span>",
 				"weekdays": "<span color='#cdd6f4'><b>{}</b></span>",
-				"today": "<span color='#f38ba8'><b>{}</b></span>"
+				"today": "<span color='#85c1dc'><b>{}</b></span>"
 			}
 		}
 	},
@@ -80,6 +106,7 @@
 			"󰃟",
 			"󰃠"
 		],
+		"on-click": "brightnessctl set 0", // todo: make a script that toggles the brightness instead
 		"tooltip": false
 	},
 	"pulseaudio": {
@@ -99,6 +126,18 @@
 		"on-click-right": "pavucontrol",
 		"on-click-middle": "pamixer -t"
 	},
+	"pulseaudio#microphone": {
+        "format": "{format_source} ",
+        "rotate": 0,
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -t 4",
+        //"on-click-middle": "volumecontrol.sh -i m",
+        //"on-scroll-up": "volumecontrol.sh -i i",
+        //"on-scroll-down": "volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "scroll-step": 5
+    },
 	"cpu": {
 		"interval": 5,
 		"format": "{usage:2}%"
@@ -149,13 +188,13 @@
 		}
 	},
 	"custom/updates": {
-		"format": "  {}",
+		"format": " {}",
 		"tooltip-format": "{}",
 		"escape": true,
 		"return-type": "json",
-		"exec": "~/.config/waybar/custom-scripts/updates",
+		"exec": "~/.config/waybar/pacman-updates",
 		"restart-interval": 60,
-		"on-click": "kitty -e ~/.config/waybar/custom-scripts/update",
+		//"on-click": "kitty -e ~/.config/waybar/custom-scripts/update",
 		"tooltip": false
 	},
 	"custom/notification": {
