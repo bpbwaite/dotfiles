@@ -1,0 +1,11 @@
+#!/bin/sh
+
+TOGGLE=$HOME/.projector-mode
+
+if [ ! -e $TOGGLE ]; then
+    touch $TOGGLE
+    hyprctl keyword monitor "DP-3,preferred,auto-up,1" 
+else
+    rm $TOGGLE
+    hyprctl keyword monitor "DP-3,preferred,auto,1,mirror,eDP-1" 
+fi
